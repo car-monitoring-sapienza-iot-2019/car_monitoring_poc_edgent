@@ -13,7 +13,7 @@ public class DataSender {
         //TODO
     }
 
-    public void sendTemperature(ReadFloatSensor sensor) {
+    public void sendRPM(ReadFloatSensor sensor) {
         float value = sensor.getFloat();
         //TODO
     }
@@ -26,6 +26,16 @@ public class DataSender {
 
     public void sendMassAirFlow(ReadDoubleSensor sensor) {
         double value = sensor.getDouble();
+        //TODO
+    }
+
+    public void sendSpeed(ReadIntSensor sensor) {
+        int value = sensor.getInt();
+        //TODO
+    }
+
+    public void sendEngineTemperature(ReadIntSensor sensor) {
+        int value = sensor.getInt();
         //TODO
     }
 }
