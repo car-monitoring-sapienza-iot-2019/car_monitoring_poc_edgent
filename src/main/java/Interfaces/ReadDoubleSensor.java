@@ -1,5 +1,5 @@
 package Interfaces;
 
 public interface ReadDoubleSensor {
-    double getDouble();
+    Double getDouble();
 }
