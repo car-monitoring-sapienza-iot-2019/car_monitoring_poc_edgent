@@ -1,5 +1,5 @@
 import java.time.LocalDateTime;
-import java.util.Date;
+import org.apache.edgent.function.Supplier;
 
 import com.google.gson.JsonObject;
 
@@ -10,7 +10,7 @@ import Interfaces.ReadLocationSensor;
 
 
 
-public class DataAggregator {
+public class DataAggregator implements Supplier<JsonObject> {
 
     private ReadIntSensor throttleSensor;
     private ReadFloatSensor rpmSensor;
@@ -32,9 +32,8 @@ public class DataAggregator {
     }
 
 
-
-    public JsonObject getData(){
-
+    @Override
+    public JsonObject get() {
         Long lat = this.locationSensor.getLatitude();
         Long lon = this.locationSensor.getLongitude();
         Integer throttle = this.throttleSensor.getInt();
@@ -62,7 +61,7 @@ public class DataAggregator {
             obj.addProperty("throttle", throttle);
         if(rpm ==null)
             obj.add("rpm",null);
-        else    
+        else
             obj.addProperty("rpm", rpm);
         if(massAirFlow == null)
             obj.add("massAirFlow",null);
@@ -76,7 +75,7 @@ public class DataAggregator {
             obj.add("engineTemperature", null);
         else
             obj.addProperty("engineTemperature", engineTemperature);
-        
+
         return obj;
     }
 }

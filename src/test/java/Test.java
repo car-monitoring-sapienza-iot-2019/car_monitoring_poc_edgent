@@ -21,7 +21,7 @@ public class Test {
         DataAggregator aggregator = new DataAggregator(builder);
 
 
-        JsonObject obj = aggregator.getData();
+        JsonObject obj = aggregator.get();
         System.out.println(obj);
     }
 }
