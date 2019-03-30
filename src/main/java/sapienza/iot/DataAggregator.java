@@ -1,13 +1,13 @@
-import java.time.LocalDateTime;
-import org.apache.edgent.function.Supplier;
+package sapienza.iot;
 
 import com.google.gson.JsonObject;
+import org.apache.edgent.function.Supplier;
+import sapienza.iot.Interfaces.ReadDoubleSensor;
+import sapienza.iot.Interfaces.ReadFloatSensor;
+import sapienza.iot.Interfaces.ReadIntSensor;
+import sapienza.iot.Interfaces.ReadLocationSensor;
 
-import Interfaces.ReadDoubleSensor;
-import Interfaces.ReadFloatSensor;
-import Interfaces.ReadIntSensor;
-import Interfaces.ReadLocationSensor;
-
+import java.time.LocalDateTime;
 
 
 public class DataAggregator implements Supplier<JsonObject> {
@@ -20,14 +20,14 @@ public class DataAggregator implements Supplier<JsonObject> {
     private ReadIntSensor engineTemperatureSensor;
 
     // Constructor
-    public DataAggregator(DataBuilder builder){
+    public DataAggregator(DataBuilder builder) {
         this.throttleSensor = builder.getThrottleSensor();
         this.rpmSensor = builder.getEngineRPMSensor();
         this.locationSensor = builder.getLocationSensor();
         this.massAirFlowSensor = builder.getMassAirFlowSensor();
         this.speedSensor = builder.getSpeedSensor();
         this.engineTemperatureSensor = builder.getTemperatureSensor();
-        
+
 
     }
 
@@ -48,8 +48,7 @@ public class DataAggregator implements Supplier<JsonObject> {
         obj.addProperty("date", date);
         if (lat == null || lon == null) {
             obj.add("location", null);
-        }
-        else {
+        } else {
             JsonObject coords = new JsonObject();
             coords.addProperty("lat", lat);
             coords.addProperty("lon", lon);
@@ -59,19 +58,19 @@ public class DataAggregator implements Supplier<JsonObject> {
             obj.add("throttle", null);
         else
             obj.addProperty("throttle", throttle);
-        if(rpm ==null)
-            obj.add("rpm",null);
+        if (rpm == null)
+            obj.add("rpm", null);
         else
             obj.addProperty("rpm", rpm);
-        if(massAirFlow == null)
-            obj.add("massAirFlow",null);
+        if (massAirFlow == null)
+            obj.add("massAirFlow", null);
         else
             obj.addProperty("massAirFlow", massAirFlow);
-        if(speed==null)
+        if (speed == null)
             obj.add("speed", null);
         else
             obj.addProperty("speed", speed);
-        if(engineTemperature==null)
+        if (engineTemperature == null)
             obj.add("engineTemperature", null);
         else
             obj.addProperty("engineTemperature", engineTemperature);

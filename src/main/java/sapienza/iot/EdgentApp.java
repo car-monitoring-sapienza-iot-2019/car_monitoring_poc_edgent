@@ -1,7 +1,6 @@
-import java.io.File;
+package sapienza.iot;
 
 import com.google.gson.JsonObject;
-
 import org.apache.edgent.connectors.iot.IotDevice;
 import org.apache.edgent.connectors.iot.QoS;
 import org.apache.edgent.connectors.iotp.IotpDevice;
@@ -15,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class EdgentApp {
 
-    public static void init(Properties prop, DataBuilder builder){
+    public static void init(Properties prop, DataBuilder builder) {
         DirectProvider dp = new DirectProvider();
         DirectTopology topology = dp.newTopology();
         IotDevice device = new IotpDevice(topology, prop);
