@@ -19,7 +19,7 @@ public class EdgentApp {
         DirectTopology topology = dp.newTopology();
         IotDevice device = new IotpDevice(topology, prop);
         DataAggregator sensors = new DataAggregator(builder);
-        TStream<JsonObject> jsonStream = device.topology().poll(sensors, 1, TimeUnit.SECONDS);
+        TStream<JsonObject> jsonStream = device.topology().poll(sensors, 5, TimeUnit.SECONDS);
         jsonStream.print();
         dp.submit(topology);
         device.events(jsonStream, "0001", QoS.FIRE_AND_FORGET);
