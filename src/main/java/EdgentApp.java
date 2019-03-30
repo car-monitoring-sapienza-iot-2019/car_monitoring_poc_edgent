@@ -8,35 +8,22 @@ import org.apache.edgent.connectors.iotp.IotpDevice;
 import org.apache.edgent.providers.direct.DirectProvider;
 import org.apache.edgent.providers.direct.DirectTopology;
 import org.apache.edgent.topology.TStream;
+
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 
 public class EdgentApp {
-    public static void main(String[] args) {
+
+    public static void init(Properties prop, DataBuilder builder){
         DirectProvider dp = new DirectProvider();
         DirectTopology topology = dp.newTopology();
-
-        String deviceCfg = "C:\\Users\\Gabbo\\car_monitoring_poc_edgent\\device.cfg";
-        IotDevice device = new IotpDevice(topology, new File(deviceCfg));
-
-        ReadSensorImpl sensor = new ReadSensorImpl();
-        DataBuilder builder = new DataBuilder();
-        builder.setEngineRPMSensor(sensor);
-        builder.setLocationSensor(sensor);
-        builder.setMassAirFlowSensor(sensor);
-        builder.setSpeedSensor(sensor);
-        builder.setTemperatureSensor(sensor);
-        builder.setThrottleSensor(sensor);
-
+        IotDevice device = new IotpDevice(topology, prop);
         DataAggregator sensors = new DataAggregator(builder);
-
         TStream<JsonObject> jsonStream = device.topology().poll(sensors, 1, TimeUnit.SECONDS);
-
         jsonStream.print();
         dp.submit(topology);
-
         device.events(jsonStream, "0001", QoS.FIRE_AND_FORGET);
-
     }
 
 }
