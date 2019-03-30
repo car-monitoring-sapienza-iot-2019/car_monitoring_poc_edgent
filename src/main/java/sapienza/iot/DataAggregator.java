@@ -12,12 +12,12 @@ import java.time.LocalDateTime;
 
 public class DataAggregator implements Supplier<JsonObject> {
 
-    private ReadIntSensor throttleSensor;
-    private ReadFloatSensor rpmSensor;
+    private ReadFloatSensor throttleSensor;
+    private ReadIntSensor rpmSensor;
     private ReadLocationSensor locationSensor;
     private ReadDoubleSensor massAirFlowSensor;
     private ReadIntSensor speedSensor;
-    private ReadIntSensor engineTemperatureSensor;
+    private ReadFloatSensor engineTemperatureSensor;
 
     // Constructor
     public DataAggregator(DataBuilder builder) {
@@ -36,11 +36,11 @@ public class DataAggregator implements Supplier<JsonObject> {
     public JsonObject get() {
         Long lat = this.locationSensor.getLatitude();
         Long lon = this.locationSensor.getLongitude();
-        Integer throttle = this.throttleSensor.getInt();
-        Float rpm = this.rpmSensor.getFloat();
+        Float throttle = this.throttleSensor.getFloat();
+        Integer rpm = this.rpmSensor.getInt();
         Double massAirFlow = this.massAirFlowSensor.getDouble();
         Integer speed = this.speedSensor.getInt();
-        Integer engineTemperature = this.engineTemperatureSensor.getInt();
+        Float engineTemperature = this.engineTemperatureSensor.getFloat();
         String date = LocalDateTime.now().toString();
 
 

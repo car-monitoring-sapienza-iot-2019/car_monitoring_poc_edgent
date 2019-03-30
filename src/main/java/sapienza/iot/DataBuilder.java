@@ -6,22 +6,22 @@ import sapienza.iot.Interfaces.ReadIntSensor;
 import sapienza.iot.Interfaces.ReadLocationSensor;
 
 public class DataBuilder {
-    private ReadIntSensor throttleSensor;
-    private ReadFloatSensor rpmSensor;
+    private ReadFloatSensor throttleSensor;
+    private ReadIntSensor rpmSensor;
     private ReadLocationSensor locationSensor;
     private ReadDoubleSensor massAirFlowSensor;
     private ReadIntSensor speedSensor;
-    private ReadIntSensor engineTemperatureSensor;
+    private ReadFloatSensor engineTemperatureSensor;
 
     public DataBuilder() {
 
     }
 
-    public void setThrottleSensor(ReadIntSensor sensor) {
+    public void setThrottleSensor(ReadFloatSensor sensor) {
         this.throttleSensor = sensor;
     }
 
-    public void setEngineRPMSensor(ReadFloatSensor sensor) {
+    public void setEngineRPMSensor(ReadIntSensor sensor) {
         this.rpmSensor = sensor;
     }
 
@@ -37,16 +37,16 @@ public class DataBuilder {
         this.massAirFlowSensor = sensor;
     }
 
-    public void setTemperatureSensor(ReadIntSensor sensor) {
+    public void setTemperatureSensor(ReadFloatSensor sensor) {
         this.engineTemperatureSensor = sensor;
     }
 
 
-    public ReadIntSensor getThrottleSensor() {
+    public ReadFloatSensor getThrottleSensor() {
         return this.throttleSensor;
     }
 
-    public ReadFloatSensor getEngineRPMSensor() {
+    public ReadIntSensor getEngineRPMSensor() {
         return this.rpmSensor;
     }
 
@@ -62,7 +62,7 @@ public class DataBuilder {
         return this.massAirFlowSensor;
     }
 
-    public ReadIntSensor getTemperatureSensor() {
+    public ReadFloatSensor getTemperatureSensor() {
         return this.engineTemperatureSensor;
     }
 
