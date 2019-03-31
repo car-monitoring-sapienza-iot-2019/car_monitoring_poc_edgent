@@ -34,8 +34,8 @@ public class DataAggregator implements Supplier<JsonObject> {
 
     @Override
     public JsonObject get() {
-        Long lat = this.locationSensor.getLatitude();
-        Long lon = this.locationSensor.getLongitude();
+        Double lat = this.locationSensor.getLatitude();
+        Double lon = this.locationSensor.getLongitude();
         Float throttle = this.throttleSensor.getFloat();
         Integer rpm = this.rpmSensor.getInt();
         Double massAirFlow = this.massAirFlowSensor.getDouble();

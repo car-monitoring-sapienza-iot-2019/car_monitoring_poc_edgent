@@ -5,27 +5,27 @@ import sapienza.iot.Interfaces.ReadLocationSensor;
 
 public class ReadSensorImpl implements ReadDoubleSensor, ReadFloatSensor, ReadIntSensor, ReadLocationSensor {
     @Override
-    public Long getLongitude() {
-        return new Long(12492373);
+    public Double getLongitude() {
+        return 12492373d;
     }
 
     @Override
-    public Long getLatitude() {
-        return new Long(41890251);
+    public Double getLatitude() {
+        return 41890251d;
     }
 
     @Override
     public Integer getInt() {
-        return new Integer(9);
+        return 9;
     }
 
     @Override
     public Float getFloat() {
-        return new Float(10.5);
+        return 10.5f;
     }
 
     @Override
     public Double getDouble() {
-        return new Double(10.8491028);
+        return 10.8491028;
     }
 }
