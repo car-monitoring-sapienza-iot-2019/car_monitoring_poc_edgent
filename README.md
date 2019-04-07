@@ -53,6 +53,24 @@ dependencies {
 }
 ```
 
+## Example
+```
+DataBuilder builder = new DataBuilder();
+// Sensor is an object that implements the correct like ReadIntSensor or ReadFloatSensor
+builder.setEngineRPMSensor(sensor);
+builder.setLocationSensor(sensor);
+builder.setMassAirFlowSensor(sensor);
+builder.setSpeedSensor(sensor);
+builder.setTemperatureSensor(sensor);
+builder.setThrottleSensor(sensor);
+Properties prop = new Properties();
+prop.setProperty("org", "your org");
+prop.setProperty("type", "your type");
+prop.setProperty("id", "your id");
+prop.setProperty("auth-method", "your auth-method");
+prop.setProperty("auth-token", "your token");
+EdgentApp.init(prop, builder); //Data are now being sent in a background thread
+```
 
 
  ## Dependencies
